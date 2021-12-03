@@ -22,23 +22,21 @@
       <audio id="drums" src="Jumanji_1995_Drums_SFX_Sound_Effect.mp3" loop></audio>
     </div>
     
-    <button id="preInicio" onclick="iniJue()">
+    
+    
+    <br>
+    <br>
+    <br>  
+    <div id="board">
+      <button id="preInicio" onclick="iniJue()">
       <svg style="background: black" height="200" width="200">
         <circle cx="100" cy="100" r="90" stroke="brown" stroke-width="12" fill="silver" />
         <text id="logoIni" x="60" y="110" fill="indigo">PUSH</text>
       </svg>
     </button>
-    
-    <br>
-    <br>
-    <br>  
-    <div>
-    
     </div>
     
-    <button onclick="inicia()">inicia</button>
-    <button onclick="para()">para</button>
-    <button onclick="recarga()">recarga</button>
+    
     
     
     
@@ -49,6 +47,7 @@
     <script>
       //alert("Suba el volúmen para sentir escalofríos...");
       const drums = document.getElementById("drums");
+      let board = document.getElementById("board");
       //drums.play();
       function inicia(){
         drums.play();
@@ -61,6 +60,11 @@
       }
       function iniJue(){
         inicia();
+        board.innerHTML = `
+          <button onclick="inicia()">inicia</button>
+          <button onclick="para()">para</button>
+          <button onclick="recarga()">recarga</button>
+        `;
         //alert("Suba el volúmen para sentir escalofríos...");
         //Necesitamos decirle al usuario ode manera cómoda, que suba el volúmen.
       }
