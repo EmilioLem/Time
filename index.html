@@ -17,14 +17,23 @@
     <div id="musicas">
       <audio id="drums" src="Jumanji_1995_Drums_SFX_Sound_Effect.mp3" loop></audio>
     </div>
+    
+    <button id="preInicio" onclick="iniJue()">
+      <svg style="background: black" height="200" width="200">
+        <circle cx="100" cy="100" r="90" stroke="brown" stroke-width="12" fill="silver" />
+        <text id="logoIn" x="60" y="110" fill="indigo">PUSH</text>
+      </svg>
+    </button>
+    
+      <div>
+    
+    </div>
+    
     <button onclick="inicia()">inicia</button>
     <button onclick="para()">para</button>
     <button onclick="recarga()">recarga</button>
     
-    <svg style="background: black" height="200" width="200">
-      <circle cx="100" cy="100" r="90" stroke="brown" stroke-width="12" fill="silver" />
-      <text id="logoIn" x="60" y="110" fill="indigo">PUSH</text>
-    </svg>
+    
     
     <br>
     <p>
@@ -40,6 +49,9 @@
       }
       function recarga(){
         drums.load();
+      }
+      function iniJue(){
+        alert("Button working correctly");
       }
     </script>
   </body>
