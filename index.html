@@ -18,6 +18,9 @@
       #board{
         text-align: center;
       }
+      #video{
+        display: none;
+      }
     </style>
   </head>  
   <body>
@@ -38,7 +41,69 @@
     </button>
     </div>
     
+    <!-- Inicia pruebaaaaaaaaaaaaaaaaaaaaaaaaa -->
+  
+    <video autoplay id="video"></video>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const canvas = document.querySelector('#canvas');
+    let context = canvas.getContext('2d');
+
+    const video = document.querySelector('#video');
+    const constraints = {
+      video: {
+        //16:9 aspect ratio
+         /*width: {
+          ideal: 640//320//256
+          /*min: 1280,
+          ideal: 1920,
+          max: 2560,*
+        },
+        height: {
+          ideal: 480//240//144
+          /*min: 720,
+          ideal: 1080,
+          max: 1440,*
+        },*/
+        //facingMode: "enviroment"
+      },
+    };
     
+    window.onload = startVideo();
+    //canvas.addEventListener("click", scre);
+    setInterval(logPixel, 33.33);
+
+    async function startVideo(){
+      const videoStream = await navigator.mediaDevices.getUserMedia(constraints);
+      video.srcObject = videoStream;
+    };
+
+    function scre(){
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      if(canvas.width==0 || canvas.height==0){
+        return false;//alert("0's");
+      }else{
+        context.drawImage(video, 0, 0); 
+        return true;
+      }
+    };
+    function logPixel(){
+      console.time();
+      if(scre()){
+        let x = canvas.width;
+        let y = canvas.height;
+        var data = context.getImageData(x / 2, y / 2, 1, 1).data;
+        var rgb = [data[0], data[1], data[2]];
+
+        document.querySelector("body").style.backgroundColor = `rgb(${data[0]}, ${data[1]}, ${data[2]})`;
+      }
+      console.timeEnd();
+    };
+  </script>
+    
+  <!-- Termina pruebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
     
     
     
