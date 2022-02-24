@@ -1,0 +1,17 @@
+*{
+  background:black;
+  color: white;
+  font-size:2rem;
+}
+#logoIni{
+  font-size: 111px;
+}
+.persoCont{
+  border: 5px dotted whitesmoke;
+}
+#main{
+  text-align: center;
+}
+.foSiTeCo{
+  font-size: 10px;
+}
