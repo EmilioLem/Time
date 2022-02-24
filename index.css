@@ -1,17 +1,26 @@
+:root{
+  --whitish: rgb(251, 246, 255);
+}
 *{
   background:black;
-  color: white;
-  font-size:2rem;
-}
-#logoIni{
-  font-size: 111px;
-}
-.persoCont{
-  border: 5px dotted whitesmoke;
+  color: var(--whitish);
+  /*  */
+  margin: 3px;
 }
 #main{
   text-align: center;
+  font-size: 1.7rem;
 }
-.foSiTeCo{
-  font-size: 10px;
+#logoIni{
+  /* logo */
+  font-size: 111px;
+}
+
+/*table, */th, td{
+  border: 3px solid var(--whitish);
+  padding: 4px;
+  margin: 2px;
+}
+table{
+  margin: 40px auto;
 }
