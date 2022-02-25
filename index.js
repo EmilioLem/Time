@@ -1,6 +1,7 @@
 const drums = document.getElementById("drums");
 const main = document.getElementById("main");
 var perSer = null; //array con preguntas del personaje seleccionado
+var enConf = false; //Si config está abierto
 
 const formatQuestion = `<h1 id="Dquestion"></h1> <br> <div id="Dcanvas"> </div> <br> <button id="Dopcion1" onclick="pregStart()"></button> <button id="Dopcion2" onclick="pregStart()"></button> <button id="Dopcion3" onclick="pregStart()"></button>`;
 
@@ -63,3 +64,16 @@ function pregStart(){
   opcion2.innerText = perSer[ale].opt2;
   opcion3.innerText = perSer[ale].opt3;
 }
+
+document.getElementById("optB").addEventListener("click", ()=>{
+  if(!enConf){ //abrir
+    document.getElementById("optC").style.display = "initial";
+    drums.pause();
+    enConf = true;
+  }else{//cerrar
+    document.getElementById("optC").style.display = "none";
+    drums.play();
+    enConf = false;
+  }
+  //alert("Hi");
+});
