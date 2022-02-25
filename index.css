@@ -48,7 +48,14 @@ table{
   --5vw: 5vw;
   right: var(--5vw);
   top: var(--5vw);
+  display: none;
 }
 #optB:hover{
   transform: scale(2);
+}
+.hostAd{
+  border: 3px solid var(--whitish);
+  border-radius: 7px;
+  width: max-content;
+  margin: 15px auto;
 }
