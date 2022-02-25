@@ -10,6 +10,8 @@
 #main{
   text-align: center;
   font-size: 1.7rem;
+  /* Quitar lo siguiente 
+  background: red;*/
 }
 #logoIni{
   /* logo */
@@ -23,4 +25,30 @@
 }
 table{
   margin: 40px auto;
+}
+.tablaP{
+  /* Stands for: "Tabla de Personajes" */
+  border: 3px solid red;
+  margin: 5px;
+  padding: 2px;
+  display: inline-block;
+  width: min-content;
+}
+#optC{
+  /* Este es el option chart */
+  position: absolute;
+  left: 1cm;
+  top: 0.5cm;
+  /* display: none; */
+}
+#optB{
+  /* Este es el option button */
+  background: none;
+  position: fixed;
+  --5vw: 5vw;
+  right: var(--5vw);
+  top: var(--5vw);
+}
+#optB:hover{
+  transform: scale(2);
 }
