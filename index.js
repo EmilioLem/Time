@@ -13,6 +13,7 @@ function iniJue() { //Activado con botón inicial
   drums.play();
   // drums.pause();
   //drums.load();
+  document.getElementById("optB").style.display = "initial";
   main.innerHTML = formatPersonSelecction;
 }
 function asigPer(perSelected){ //Activado con opciones de personajes
