@@ -39,7 +39,7 @@ table{
   position: absolute;
   left: 1cm;
   top: 0.5cm;
-  /* display: none; */
+  display: none;
 }
 #optB{
   /* Este es el option button */
