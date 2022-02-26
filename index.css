@@ -35,12 +35,20 @@ table{
   width: min-content;
 }
 #optC{
-  /* Este es el option chart */
-  position: absolute;
-  left: 1cm;
-  top: 0.5cm;
   display: none;
-  background: rgba(0, 0, 100, 0.7); /*aplicar a todos los elementos dentro de el option chart*/
+  background: rgba(0, 0, 200, 0.9);
+  position: absolute;
+  height: 80vh;
+  text-align: center;
+  width: 80vw;
+  overflow: scroll;
+  margin: auto;
+}
+#optC > *{
+  /* Este es el option chart */
+  position: relative;
+  
+  background: rgba(0, 0, 200, 0.2);
 }
 #optB{
   /* Este es el option button */
@@ -59,4 +67,8 @@ table{
   border-radius: 7px;
   width: max-content;
   margin: 15px auto;
+  margin-bottom: 20px;
+  /* position: relative; */
+  display: block;
+  background: black;
 }
