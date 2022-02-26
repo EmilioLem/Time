@@ -40,6 +40,7 @@ table{
   left: 1cm;
   top: 0.5cm;
   display: none;
+  background: rgba(0, 0, 100, 0.7); /*aplicar a todos los elementos dentro de el option chart*/
 }
 #optB{
   /* Este es el option button */
