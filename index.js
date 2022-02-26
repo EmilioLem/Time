@@ -7,8 +7,6 @@ const formatQuestion = `<h1 id="Dquestion"></h1> <br> <div id="Dcanvas"> </div> 
 
 const formatPersonSelecction = `<h1>¿Qué personaje quieres?</h1> <br> <img src="https://th.bing.com/th/id/OIP._WJfWunsZBFM8HemZ828XAAAAA?pid=ImgDet&rs=1" alt="incognit image" width="20%vW"> <br><div class="tablaP" onclick="asigPer('menor')">Menor de edad<br>${menor[0]}</div><div class="tablaP" onclick="asigPer('universitario')">Universitario<br>${universitario[0]}</div><div class="tablaP" onclick="asigPer('gobernante')">Gobernante<br>${gobernante[0]}</div><div class="tablaP" onclick="asigPer('trabajador')">Empleado<br>${trabajador[0]}</div><div class="tablaP" onclick="asigPer('empresario')">Empresario<br>${empresario[0]}</div><div class="tablaP" onclick="asigPer('educador')">Educador<br>${educador[0]}</div>`;
 
-const formatExtraButton = `?`;
-
 function iniJue() { //Activado con botón inicial
   drums.play();
   // drums.pause();
@@ -18,6 +16,14 @@ function iniJue() { //Activado con botón inicial
 }
 function asigPer(perSelected){ //Activado con opciones de personajes
   try{
+    if(perSer==null){
+      //Sólo agrega los personajes al optCp si es la primera vez, o sea que no se ha seleccionado ningún personaje antes
+      document.getElementById("optCp").innerHTML = "<h3>Cambio de personaje:</h3>" + formatPersonSelecction;
+      document.getElementById("optCp").children[1].remove(); //quito la frase de "que personaje quieres"
+      document.getElementById("optCp").children[2].remove(); //Quito la imagen
+      document.getElementById("optCp").children[1].remove(); //Quito un <br>
+      document.getElementById("optCp").children[1].remove(); //Quito otro <br>
+    }
     switch(perSelected){
       case 'menor': perSer = menor; break;
       case 'universitario': perSer = universitario; break;
@@ -41,6 +47,13 @@ function asigPer(perSelected){ //Activado con opciones de personajes
     return;
   }
   //Quizá al tener datos correctos en todos los campos, saquemos de ahí sólo el switch, el resto ya no será necesario
+  
+  if(enConf){
+    document.getElementById("optC").style.display = "none";
+    drums.play();
+    enConf = false;
+  }
+
   main.innerHTML = formatQuestion;
   pregStart();
   return;
@@ -75,6 +88,7 @@ document.getElementById("optB").addEventListener("click", ()=>{
     document.getElementById("optC").style.display = "none";
     drums.play();
     enConf = false;
+    //Lo mismo debe pasar si se selecciona un personaje
   }
   //alert("Hi");
 });
