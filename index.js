@@ -3,7 +3,7 @@ const main = document.getElementById("main");
 var perSer = null; //array con preguntas del personaje seleccionado
 var enConf = false; //Si config está abierto
 
-const formatQuestion = `<h1 id="Dquestion"></h1> <br> <div id="Dcanvas"> </div> <br> <button id="Dopcion1" onclick="pregStart()"></button> <button id="Dopcion2" onclick="pregStart()"></button> <button id="Dopcion3" onclick="pregStart()"></button>`;
+const formatQuestion = `<h1 id="Dquestion"></h1> <br> <div id="Countdown"></div> <br> <div id="dSVD"> </div> <br> <button id="Dopcion1" onclick="pregStart()"></button> <button id="Dopcion2" onclick="pregStart()"></button> <button id="Dopcion3" onclick="pregStart()"></button>`;
 
 const formatPersonSelecction = `<h1>¿Qué personaje quieres?</h1> <br> <img src="https://th.bing.com/th/id/OIP._WJfWunsZBFM8HemZ828XAAAAA?pid=ImgDet&rs=1" alt="incognit image" width="20%vW"> <br><div class="tablaP" onclick="asigPer('menor')">Menor de edad<br>${menor[0]}</div><div class="tablaP" onclick="asigPer('universitario')">Universitario<br>${universitario[0]}</div><div class="tablaP" onclick="asigPer('gobernante')">Gobernante<br>${gobernante[0]}</div><div class="tablaP" onclick="asigPer('trabajador')">Empleado<br>${trabajador[0]}</div><div class="tablaP" onclick="asigPer('empresario')">Empresario<br>${empresario[0]}</div><div class="tablaP" onclick="asigPer('educador')">Educador<br>${educador[0]}</div>`;
 
@@ -16,13 +16,9 @@ function iniJue() { //Activado con botón inicial
 }
 function asigPer(perSelected){ //Activado con opciones de personajes
   try{
-    if(perSer==null){
+    if(perSer==null){ //raro, porque asumimos que hay datos de todo
       //Sólo agrega los personajes al optCp si es la primera vez, o sea que no se ha seleccionado ningún personaje antes
-      document.getElementById("optCp").innerHTML = "<h3>Cambio de personaje:</h3>" + formatPersonSelecction;
-      document.getElementById("optCp").children[1].remove(); //quito la frase de "que personaje quieres"
-      document.getElementById("optCp").children[2].remove(); //Quito la imagen
-      document.getElementById("optCp").children[1].remove(); //Quito un <br>
-      document.getElementById("optCp").children[1].remove(); //Quito otro <br>
+      document.getElementById("optCp").innerHTML = `<details> <summary><h3>Cambio de personaje:</h3></summary> <div class="tablaP" onclick="asigPer('menor')">Menor de edad <br>${menor[0]} </div> <div class="tablaP" onclick="asigPer('universitario')">Universitario <br>${universitario[0]} </div> <div class="tablaP" onclick="asigPer('gobernante')">Gobernante <br>${gobernante[0]} </div> <div class="tablaP" onclick="asigPer('trabajador')">Empleado <br>${trabajador[0]} </div> <div class="tablaP" onclick="asigPer('empresario')">Empresario <br>${empresario[0]} </div> <div class="tablaP" onclick="asigPer('educador')">Educador <br>${educador[0]} </div></details>`;
     }
     switch(perSelected){
       case 'menor': perSer = menor; break;
@@ -55,6 +51,7 @@ function asigPer(perSelected){ //Activado con opciones de personajes
   }
 
   main.innerHTML = formatQuestion;
+  drums.pause(); //Preguntar si la música se queda para siempre
   pregStart();
   return;
 }
@@ -62,7 +59,8 @@ function asigPer(perSelected){ //Activado con opciones de personajes
 function pregStart(){
   //requiere main.innerHTML = formatQuestion; // to be displayed
   let pregunta = document.getElementById("Dquestion");
-  let imagenSVG = document.getElementById("Dcanvas");
+  let Countdown = document.getElementById("Countdown");
+  let imagenSVG = document.getElementById("dSVD");
   let opcion1 = document.getElementById("Dopcion1");
   let opcion2 = document.getElementById("Dopcion2");
   let opcion3 = document.getElementById("Dopcion3");
@@ -73,22 +71,32 @@ function pregStart(){
   let ale = Math.ceil(Math.random() * (perSer.length - 1));
   
   pregunta.innerText = perSer[ale].quest;
+  Countdown.innerHTML = `<video id="10_s_countDown" src="./10_s_countDown.mp4" width="150"></video>`;
+  let s10_countDown = document.getElementById("10_s_countDown")
+  s10_countDown.play();
+  s10_countDown.onended = () => {
+    alert("Se acabo el tiempo :(");
+    pregStart();
+  };
   imagenSVG.innerHTML = perSer[ale].imgSVG;
   opcion1.innerText = perSer[ale].opt1;
   opcion2.innerText = perSer[ale].opt2;
   opcion3.innerText = perSer[ale].opt3;
 }
 
+
 document.getElementById("optB").addEventListener("click", ()=>{
   if(!enConf){ //abrir
+    //Agregar estilo para resaltar engranaje
     document.getElementById("optC").style.display = "initial";
-    drums.pause();
+    drums.play();
     enConf = true;
   }else{//cerrar
+    //Quitar estilo de engranaje que lo resaltaba
     document.getElementById("optC").style.display = "none";
-    drums.play();
+    if(perSer) drums.pause();
     enConf = false;
     //Lo mismo debe pasar si se selecciona un personaje
   }
-  //alert("Hi");
+  //Muchos de estos cambios se van a aplicar también en la sección más arriba, donde se selecciona un personaje.
 });
