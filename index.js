@@ -72,7 +72,8 @@ function pregStart(){
   
   pregunta.innerText = perSer[ale].quest;
   Countdown.innerHTML = `<video id="10_s_countDown" src="./10_s_countDown.mp4" width="150"></video>`;
-  let s10_countDown = document.getElementById("10_s_countDown")
+  let s10_countDown = document.getElementById("10_s_countDown");
+  s10_countDown.controls = false;
   s10_countDown.play();
   s10_countDown.onended = () => {
     alert("Se acabo el tiempo :(");
