@@ -73,7 +73,6 @@ function pregStart(){
   pregunta.innerText = perSer[ale].quest;
   Countdown.innerHTML = `<video id="10_s_countDown" src="./10_s_countDown.mp4" width="150" playsinline></video>`;
   let s10_countDown = document.getElementById("10_s_countDown");
-  //s10_countDown.controls = false;
   s10_countDown.play();
   s10_countDown.onended = () => {
     alert("Se acabo el tiempo :(");
@@ -87,13 +86,16 @@ function pregStart(){
 
 
 document.getElementById("optB").addEventListener("click", ()=>{
+  let s10_countDown = document.getElementById("10_s_countDown"); //Repetida de pregStart()
   if(!enConf){ //abrir
     //Agregar estilo para resaltar engranaje
+    s10_countDown.pause();
     document.getElementById("optC").style.display = "initial";
     drums.play();
     enConf = true;
   }else{//cerrar
     //Quitar estilo de engranaje que lo resaltaba
+    s10_countDown.play();
     document.getElementById("optC").style.display = "none";
     if(perSer) drums.pause();
     enConf = false;
