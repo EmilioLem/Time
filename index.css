@@ -30,7 +30,7 @@ table{
 }
 .tablaP{
   /* Stands for: "Tabla de Personajes" */
-  border: 3px solid rgb(117, 13, 13);
+  border: 3px solid red;
   margin: 5px;
   padding: 2px;
   display: inline-block;
