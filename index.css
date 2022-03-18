@@ -72,3 +72,13 @@ table{
   display: block;
   background: black;
 }
+
+body {
+  background-color: black;
+}
+
+@media only screen and (orientation: landscape) {
+  body {
+    background-color: black;
+  }
+}
