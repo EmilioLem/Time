@@ -68,15 +68,10 @@ function pregStart(){
   let imagenSVG = document.getElementById("dSVD");
   let Answers = document.getElementById("Answers");
   
-  //document.getElementById("Answers").innerHTML = `<button id="Dopcion1" onclick="contesta(true)"></button> <button id="Dopcion2" onclick="contesta(false)"></button> <button id="Dopcion3" onclick="contesta(false)"></button>`;
-  /*let opcion1 = document.getElementById("Dopcion1");
-  let opcion2 = document.getElementById("Dopcion2");
-  let opcion3 = document.getElementById("Dopcion3");/**/
 
   // la longitud se le resta 1, se vuelve el index máximo. 
   // al random-earlo y sacar el cielo, se obtiene rango
   // [1-index máximo]
-  
   let ale; //Número de pregunta
   do{
     ale = Math.ceil(Math.random() * (perSer.length - 1));
