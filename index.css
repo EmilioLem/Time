@@ -147,6 +147,9 @@ table{
   border-radius: 15px;
   margin: 7px auto;
 }
+#Answers > *{
+  font-size: 2rem;
+}
 
 body {
   background-color: black;
