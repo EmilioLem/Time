@@ -2,8 +2,9 @@ const drums = document.getElementById("drums");
 const main = document.getElementById("main");
 var perSer = null; //array con preguntas del personaje seleccionado Sirve?
 var enConf = false; //Si config está abierto
+var preAle = 0;
 
-const formatQuestion = `<h1 id="Dquestion"></h1> <br> <div id="Countdown"></div> <br> <div id="dSVD"> </div> <br> <button id="Dopcion1" onclick="pregStart()"></button> <button id="Dopcion2" onclick="pregStart()"></button> <button id="Dopcion3" onclick="pregStart()"></button>`;
+const formatQuestion = `<h1 id="Dquestion"></h1> <br> <div id="Countdown"></div> <br> <div id="dSVD"> </div> <br> <div id="Answers"></div>`;
 
 const formatPersonSelecction = `<h1>¿Qué personaje quieres?</h1> <br> <img src="https://th.bing.com/th/id/OIP._WJfWunsZBFM8HemZ828XAAAAA?pid=ImgDet&rs=1" alt="incognit image" width="20%vW"> <br><div class="tablaP" onclick="asigPer('menor')">Menor de edad<br>${menor[0]}</div><div class="tablaP" onclick="asigPer('universitario')">Universitario<br>${universitario[0]}</div><div class="tablaP" onclick="asigPer('gobernante')">Gobernante<br>${gobernante[0]}</div><div class="tablaP" onclick="asigPer('trabajador')">Empleado<br>${trabajador[0]}</div><div class="tablaP" onclick="asigPer('empresario')">Empresario<br>${empresario[0]}</div><div class="tablaP" onclick="asigPer('educador')">Educador<br>${educador[0]}</div>`;
 
@@ -63,27 +64,54 @@ function pregStart(){
   let pregunta = document.getElementById("Dquestion");
   let Countdown = document.getElementById("Countdown");
   let imagenSVG = document.getElementById("dSVD");
-  let opcion1 = document.getElementById("Dopcion1");
+  let Answers = document.getElementById("Answers");
+  
+  //document.getElementById("Answers").innerHTML = `<button id="Dopcion1" onclick="contesta(true)"></button> <button id="Dopcion2" onclick="contesta(false)"></button> <button id="Dopcion3" onclick="contesta(false)"></button>`;
+  /*let opcion1 = document.getElementById("Dopcion1");
   let opcion2 = document.getElementById("Dopcion2");
-  let opcion3 = document.getElementById("Dopcion3");
+  let opcion3 = document.getElementById("Dopcion3");/**/
 
   // la longitud se le resta 1, se vuelve el index máximo. 
   // al random-earlo y sacar el cielo, se obtiene rango
   // [1-index máximo]
-  let ale = Math.ceil(Math.random() * (perSer.length - 1));
   
-  pregunta.innerText = perSer[ale].quest;
+  let ale; //Número de pregunta
+  do{
+    ale = Math.ceil(Math.random() * (perSer.length - 1));
+  }while(ale == preAle);
+  
+  
   Countdown.innerHTML = `<video id="10_s_countDown" src="./10_s_countDown.mp4" width="150" playsinline></video>`;
   let s10_countDown = document.getElementById("10_s_countDown");
   s10_countDown.play();
   s10_countDown.onended = () => {
     alert("Se acabo el tiempo :(");
-    pregStart();
+    contesta(false); //Suceptible a dar distinto puntaje en el futuro?
   };
+  pregunta.innerText = perSer[ale].quest;
   imagenSVG.innerHTML = perSer[ale].imgSVG;
-  opcion1.innerText = perSer[ale].opt1;
-  opcion2.innerText = perSer[ale].opt2;
-  opcion3.innerText = perSer[ale].opt3;
+
+  Answers.innerHTML = "";
+  let opcOrden = [
+    [1, 2, 3],
+    [1, 3, 2],
+    [2, 1, 3],
+    [2, 3, 1],
+    [3, 1, 2],
+    [3, 2, 1]
+  ];
+  let j=null;
+  for(let i=0; i<3; i++){
+    j = opcOrden[Math.floor(Math.random()*6)][i];
+    Answers.innerHTML += (`<button class="opcBut" onclick="contesta(${j==1? true : false})">` + eval(`perSer[${ale}].opt${j}`) + "</button>");
+  }
+  preAle = ale;
+}
+
+function contesta(isCorrect){
+  document.getElementById("10_s_countDown").pause();
+  (isCorrect)? alert("Oh yeah!") : alert("come on!");
+  pregStart();
 }
 
 
