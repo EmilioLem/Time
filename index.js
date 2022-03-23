@@ -3,6 +3,8 @@ const main = document.getElementById("main");
 var perSer = null; //array con preguntas del personaje seleccionado Sirve?
 var enConf = false; //Si config está abierto
 var preAle = 0;
+var Rini = 127;
+var Gini = 127;
 
 const formatQuestion = `<h1 id="Dquestion"></h1> <br> <div id="Countdown"></div> <br> <div id="dSVD"> </div> <br> <div id="Answers"></div>`;
 
@@ -102,13 +104,22 @@ function pregStart(){
 
     Answers.innerHTML += (`<button class="opcBut" onclick="contesta(${j==1? true : false})">` + eval(`perSer[${ale}].opt${j}`) + "</button>");
   }
-  console.log("------");
   preAle = ale;
 }
 
 function contesta(isCorrect){
   document.getElementById("10_s_countDown").pause();
-  (isCorrect)? alert("Oh yeah!") : alert("come on!");
+  let bordeIndica = document.getElementById("dSVD");
+  if(isCorrect){
+    Rini -= 10;
+    Gini += 10;
+    alert("Muy bien!");
+  }else{
+    Rini += 10;
+    Gini -= 10;
+    alert("Auch");
+  }
+  bordeIndica.style.border = `5px solid rgb(${Rini}, ${Gini}, 0)`;
   pregStart();
 }
 
