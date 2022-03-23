@@ -140,6 +140,14 @@ table{
   background: black;
 }
 
+#dSVD{
+  width: min-content;
+  padding: 7px;
+  border: 5px solid rgb(127, 127, 0);
+  border-radius: 15px;
+  margin: 7px auto;
+}
+
 body {
   background-color: black;
 }
