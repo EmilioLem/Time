@@ -4,17 +4,21 @@
 *{
   background:black;
   color: var(--whitish);
-  /*  */
   margin: 3px;
+
+  /*Lo integré aquí Aylé, lo habías puesto en otro lado*/
+  box-sizing: border-box;
+}
+*::before, *::after {
+box-sizing: border-box;
 }
 #main{
   text-align: center;
   font-size: 1.7rem;
-  /* Quitar lo siguiente 
-  background: red;*/
 }
+
+/* Starts ini button section*/
 #logoIni{
-  /* logo */
   font-size: 111px;
   position: relative;
   display: inline-block;
@@ -38,58 +42,50 @@ button {
   --colorShadeE: rgb(203, 50, 52);
 }
 
-
-* {
-box-sizing: border-box;
-}
-*::before,
-*::after {
-box-sizing: border-box;
-}
-
-
 button.preInicio {
-padding: 2em 3em;
-border: 4px solid var(--colorShadeA);
-border-radius: 12em;
-background: var(--colorShadeE);
-transform-style: preserve-3d;
-transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  padding: 2em 3em;
+  border: 4px solid var(--colorShadeA);
+  border-radius: 12em;
+  background: var(--colorShadeE);
+  transform-style: preserve-3d;
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
 }
 button.preInicio::before { 
-position: absolute;
-content: "";
-width: 100%;
-height: 100%;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: var(--colorShadeC);
-border-radius: inherit;
-box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.75em 0 0 var(--colorShadeA);
-transform: translate3d(0, 0.75em, -1em);
-transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--colorShadeC);
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.75em 0 0 var(--colorShadeA);
+  transform: translate3d(0, 0.75em, -1em);
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
 }
 
 button.preInicio:hover {
-background: var(--colorShadeD);
-transform: translate(0, 0.375em);
+  background: var(--colorShadeD);
+  transform: translate(0, 0.375em);
 }
 
 button.preInicio:hover::before {
-transform: translate3d(0, 0.75em, -1em);
+  transform: translate3d(0, 0.75em, -1em);
 }
 
 button.preInicio:active {
-transform: translate(0em, 0.75em);
+  transform: translate(0em, 0.75em);
 }
 
 button.preInicio:active::before {
-transform: translate3d(0, 0, -1em);
+  transform: translate3d(0, 0, -1em);
 
-box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
+  box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
 }
+
+/* Finishes ini button section*/
 
 table{
   margin: 40px auto;
@@ -102,8 +98,6 @@ table{
   display: inline-block;
   width: min-content;
 }
-
-
 
 #optC{
   display: none;
@@ -123,8 +117,6 @@ table{
 }
 #optB{
     /* Este es el option button */
-      
-    /* Este es el option button */
   background: none;
   position: fixed;
   --5vw: 5vw;
@@ -136,6 +128,7 @@ table{
 #optB:hover{
   transform: scale(2);
 }
+
 .hostAd{
   border: 3px solid var(--whitish);
   border-radius: 7px;
