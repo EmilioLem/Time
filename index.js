@@ -92,19 +92,17 @@ function pregStart(){
   imagenSVG.innerHTML = perSer[ale].imgSVG;
 
   Answers.innerHTML = "";
-  let opcOrden = [
-    [1, 2, 3],
-    [1, 3, 2],
-    [2, 1, 3],
-    [2, 3, 1],
-    [3, 1, 2],
-    [3, 2, 1]
-  ];
+  let yaSelec = []; //Array que va guardando el número de respuesta ya agregada
   let j=null;
   for(let i=0; i<3; i++){
-    j = opcOrden[Math.floor(Math.random()*6)][i];
+    do{
+      j = Math.ceil(Math.random()*3);
+    }while(yaSelec.indexOf(j) != -1);
+    yaSelec.push(j);
+
     Answers.innerHTML += (`<button class="opcBut" onclick="contesta(${j==1? true : false})">` + eval(`perSer[${ale}].opt${j}`) + "</button>");
   }
+  console.log("------");
   preAle = ale;
 }
 
