@@ -77,11 +77,10 @@ function pregStart(){
     ale = Math.ceil(Math.random() * (perSer.length - 1));
   }while(ale == preAle);
   
-  
-  Countdown.innerHTML = `<video id="10_s_countDown" src="./10_s_countDown.mp4" width="150" playsinline></video>`;
-  let s10_countDown = document.getElementById("10_s_countDown");
-  s10_countDown.play();
-  s10_countDown.onended = () => {
+  Countdown.innerHTML = `<video id="15_s_countDown" src="./15_s_countDown.mp4" width="150" playsinline></video>`;
+  let s15_countDown = document.getElementById("15_s_countDown");
+  s15_countDown.play();
+  s15_countDown.onended = () => {
     alert("Se acabo el tiempo :(");
     contesta(false); //Suceptible a dar distinto puntaje en el futuro?
   };
@@ -103,33 +102,43 @@ function pregStart(){
 }
 
 function contesta(isCorrect){
-  document.getElementById("10_s_countDown").pause();
+  document.getElementById("15_s_countDown").pause();
   let bordeIndica = document.getElementById("dSVD");
   if(isCorrect){
     Rini -= 10;
     Gini += 10;
-    alert("Muy bien!");
+    puntaje(true);
   }else{
     Rini += 10;
     Gini -= 10;
-    alert("Auch");
+    puntaje(false);
   }
   bordeIndica.style.border = `5px solid rgb(${Rini}, ${Gini}, 0)`;
   pregStart();
 }
 
+function puntaje(gotCorrect){
+  if(gotCorrect){
+    let puntos = +1;
+    alert("Muy bien!");
+  }else{
+    let puntosB = -1;
+    alert("Auch");
+  }
+}
+
 
 document.getElementById("optB").addEventListener("click", ()=>{
-  let s10_countDown = document.getElementById("10_s_countDown"); //Repetida de pregStart()
+  let s15_countDown = document.getElementById("15_s_countDown"); //Repetida de pregStart()
   if(!enConf){ //abrir
     //Agregar estilo para resaltar engranaje
-    if(perSer!=null) s10_countDown.pause();
+    if(perSer!=null) s15_countDown.pause();
     document.getElementById("optC").style.display = "initial";
     drums.play();
     enConf = true;
   }else{//cerrar
     //Quitar estilo de engranaje que lo resaltaba
-    if(perSer!=null) s10_countDown.play();
+    if(perSer!=null) s15_countDown.play();
     document.getElementById("optC").style.display = "none";
     if(perSer) drums.pause();
     enConf = false;
