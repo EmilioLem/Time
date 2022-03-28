@@ -87,6 +87,16 @@ button.preInicio:active::before {
 
 /* Finishes ini button section*/
 
+#muyBien{
+  /* display: none; */
+  position: absolute;
+  top: 10vH;
+  right: 20vw;
+  font-size: xx-large;
+  z-index: 2;
+  background: none;
+}
+
 table{
   margin: 40px auto;
 }
@@ -98,6 +108,7 @@ table{
   padding: 4px;
   display: inline-block;
   width: min-content;
+  background: black;
 }
 
 #optC{
@@ -121,7 +132,7 @@ table{
 }
 #optB{
     /* Este es el option button */
-  background: none;
+  background: rgb(4, 48, 48);
   position: fixed;
   --5vw: 5vw;
   right: var(--5vw);
@@ -157,6 +168,11 @@ table{
   padding: 2px;
   background-color: beige;
   color: darkblue;
+}
+#ideaMision{
+  width: 50vw;
+  text-align: center;
+  margin: 2px auto;
 }
 
 .hostAd{
