@@ -119,10 +119,22 @@ function contesta(isCorrect){
 
 function puntaje(gotCorrect){
   if(gotCorrect){
-    let puntos = +1;
+    let good1=0;
+    if(localStorage.getItem("good1")){
+      good1 = JSON.parse(localStorage.getItem("good1"));
+    }
+    good1 += 1;
+    localStorage.setItem("good1", JSON.stringify(good1));
+    document.getElementById("good1").value = good1;
     alert("Muy bien!");
   }else{
-    let puntosB = -1;
+    let bad1=0;
+    if(localStorage.getItem("bad1")){
+      bad1 = JSON.parse(localStorage.getItem("bad1"));
+    }
+    bad1 += 1;
+    localStorage.setItem("bad1", JSON.stringify(bad1));
+    document.getElementById("bad1").value = bad1;
     alert("Auch");
   }
 }
