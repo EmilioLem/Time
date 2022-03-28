@@ -93,6 +93,7 @@ table{
 .tablaP{
   /* Stands for: "Tabla de Personajes" */
   border: 6px solid rgb(110, 1, 1);
+  border-radius: 17px;
   margin: 19px;
   padding: 4px;
   display: inline-block;
@@ -101,18 +102,20 @@ table{
 
 #optC{
   display: none;
-  background: rgba(0, 0, 200, 0.9);
+  background: rgba(201, 126, 28, 0.98);
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 80vh;
   text-align: center;
-  width: 80vw;
-  overflow: scroll;
-  margin: auto;
+  width: max-content;
+  overflow-x: auto; /*Preguntar a miss de Infooo*/
+  overflow-y: auto;
 }
 #optC > *{
   /* Este es el option chart */
   position: relative;
-  
   background: rgba(0, 0, 200, 0.2);
 }
 #optB{
@@ -127,6 +130,14 @@ table{
 
 #optB:hover{
   transform: scale(2);
+  transition: 0.5s;
+}
+#optB:hover::after{
+  transform: scale(15);
+  /* Help teacherrrrrr Mayra */
+}
+#optB:active{
+  color: blue;
 }
 
 .hostAd{
@@ -137,7 +148,7 @@ table{
   margin-bottom: 20px;
   /* position: relative;  */
   display: block;
-  background: black;
+  background: black !important;
 }
 
 #dSVD{
