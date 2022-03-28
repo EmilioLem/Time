@@ -112,6 +112,7 @@ table{
   width: max-content;
   overflow-x: auto; /*Preguntar a miss de Infooo*/
   overflow-y: auto;
+  padding: 7px;
 }
 #optC > *{
   /* Este es el option chart */
@@ -138,6 +139,24 @@ table{
 }
 #optB:active{
   color: blue;
+}
+#ayAmej{
+  font-size: xx-large;
+  width: max-content;
+  margin: 12px auto;
+  padding: 8px;
+  color: rgb(8, 218, 8);
+}
+#formSec1, #formSec1 > *, #formSec1 > *::placeholder{
+  background: brown;
+  color: rgb(3, 3, 43);
+  font-weight: bolder;
+  font-size: large;
+}
+#ideaMision, #ideaMision > *{
+  padding: 2px;
+  background-color: beige;
+  color: darkblue;
 }
 
 .hostAd{
