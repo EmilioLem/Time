@@ -108,7 +108,17 @@ table{
   padding: 4px;
   display: inline-block;
   width: min-content;
-  background: black;
+  background-color: black;
+  /* transition: background-color 400ms ease-in-out; */
+  transition-property: all;
+  transition-duration: 400ms;
+  transition-timing-function: In · Back;
+
+}
+.tablaP:hover{
+  background-color: darkblue;
+  border-color: red;
+  box-shadow: -7px 16px 28px 24px rgba(254, 247, 255, 0.48);
 }
 
 #optC{
